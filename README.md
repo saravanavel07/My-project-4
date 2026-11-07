@@ -1,58 +1,100 @@
-# Starlight Starter Kit: Basics
+# My-project-4
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+A documentation website built with **Astro** and **Starlight**. It provides a clean, responsive foundation for publishing guides and reference material using Markdown and MDX.
 
+[![Built with Starlight](https://astro.badges.dev/built-with-starlight.svg)](https://starlight.astro.build/)
+
+## Project overview
+
+This repository is currently based on the Starlight starter template. It includes a splash-style welcome page, an example guide, and an example reference page that you can replace with content for your project.
+
+## Technology stack
+
+- **Astro 5** — static site framework and development/build tooling.
+- **Astro Starlight** — documentation theme, layouts, navigation, and built-in documentation features.
+- **Markdown and MDX** — authoring formats for documentation pages; MDX also allows JSX components such as Starlight's `Card` and `CardGrid`.
+- **TypeScript** — used for the Starlight content collection configuration.
+- **Sharp** — image processing dependency used by Astro.
+
+## Components and structure
+
+| Path | Purpose |
+| --- | --- |
+| `src/content/docs/index.mdx` | Welcome/splash page. Uses Starlight's `Card` and `CardGrid` components to show next steps. |
+| `src/content/docs/guides/` | Task-oriented documentation pages. Includes an example guide. |
+| `src/content/docs/reference/` | Concise reference documentation. Includes an example reference page. |
+| `src/content.config.ts` | Registers the Starlight docs content collection, loader, and schema. |
+| `src/assets/` | Source assets used within pages; currently contains the welcome-page image. |
+| `public/` | Static files served as-is, including the site favicon. |
+| `astro.config.mjs` | Configures Astro, Starlight's site title, sidebar groups, and navigation. |
+| `package.json` | Project scripts and dependencies. |
+| `tsconfig.json` | TypeScript configuration. |
+
+### Starlight UI components currently used
+
+The home page imports and renders `Card` and `CardGrid` from `@astrojs/starlight/components`. Starlight also provides the overall documentation interface, including page layout and the configured Guides and Reference navigation. No separate custom React/Vue component library is configured in the project at this time.
+
+## Getting started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (a current supported LTS release is recommended)
+- npm
+
+### Install dependencies
+
+```sh
+npm install
 ```
-npm create astro@latest -- --template starlight
+
+### Start the local development server
+
+```sh
+npm run dev
 ```
 
-<!-- ASTRO:REMOVE:START -->
+Open the local URL printed by Astro, typically `http://localhost:4321`.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/starlight/tree/main/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/starlight/tree/main/examples/basics)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/withastro/starlight&create_from_path=examples/basics)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwithastro%2Fstarlight%2Ftree%2Fmain%2Fexamples%2Fbasics&project-name=my-starlight-docs&repository-name=my-starlight-docs)
+### Build and preview
 
-<!-- ASTRO:REMOVE:END -->
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+```sh
+npm run build
+npm run preview
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+The production site is generated in `dist/`.
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+## Available commands
 
-Static assets, like favicons, can be placed in the `public/` directory.
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local development server. |
+| `npm run start` | Alias for `npm run dev`. |
+| `npm run build` | Build the production site. |
+| `npm run preview` | Preview the production build locally. |
+| `npm run astro -- <command>` | Run an Astro CLI command. |
 
-## 🧞 Commands
+## Adding documentation
 
-All commands are run from the root of the project, from a terminal:
+Create `.md` or `.mdx` pages under `src/content/docs/`. Starlight turns these files into documentation routes. For example:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```text
+src/content/docs/
+├── index.mdx
+├── guides/
+│   └── getting-started.md
+└── reference/
+    └── configuration.md
+```
 
-## 👀 Want to learn more?
+Update the sidebar in `astro.config.mjs` when you add or reorganize navigation. Put images imported by documentation in `src/assets/`; place files that should be served directly in `public/`.
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+## Learn more
+
+- [Astro documentation](https://docs.astro.build/)
+- [Starlight documentation](https://starlight.astro.build/)
+- [Markdown guide](https://www.markdownguide.org/)
+
+## License
+
+No license is currently specified in this repository. Add a `LICENSE` file if you want to make reuse terms explicit.
